@@ -10,6 +10,44 @@ npm i ts-openapi-dsl
 
 ## Usage
 
+### Example
+
+```ts
+spec.paths = paths({
+  getUser: operation({
+    method: 'get',
+    path: '/users/:id',
+    responses: {
+      200: json({
+        schema: array(string()),
+      }),
+    },
+  }),
+});
+
+// same as
+spec.paths = {
+  '/users/:id': {
+    'get': {
+      responses: {
+        '200': {
+          content: {
+            'application/json': {
+              schema: {
+                type: 'array',
+                items: {
+                  type: 'string',
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+};
+```
+
 ### Schema helpers
 
 Schema helpers can be used to remove _some_ boilerplate around JSON schema
@@ -152,6 +190,75 @@ const type = {
   },
 };
 ```
+
+### OpenAPI helpers
+
+#### `response(props: Response): ResponseObject`
+
+Defines a response object with a single media type:
+
+```ts
+const res = response({
+  description: 'Response description',
+  headers,
+  links,
+  type: 'application/json',
+  schema,
+  examples,
+  encoding,
+});
+
+// same as
+const res = {
+  description: 'Response description',
+  headers,
+  links,
+  content: {
+    'application/json': {
+      schema,
+      examples,
+      encoding,
+    },
+  },
+};
+```
+
+#### `json(props: Response): ResponseObject`
+
+Shorthand for creating `application/json` responses.
+
+```ts
+const res = json({
+  description: 'Response description',
+  headers,
+  links,
+  schema,
+  examples,
+  encoding,
+});
+
+// same as
+const res = {
+  description: 'Response description',
+  headers,
+  links,
+  content: {
+    'application/json': {
+      schema,
+      examples,
+      encoding,
+    },
+  },
+};
+```
+
+#### `operation(op: Operation): OperationObject`
+
+Defines an operation with `path` and `method`.
+
+#### `paths(ops: Record<string, Operation>): PathsObject`
+
+Creates `paths` based on the provided `ops`.
 
 ## License
 
