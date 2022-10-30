@@ -29,11 +29,9 @@ const User = t.object('An object that represents a user', {
 });
 ```
 
-#### Reference
-
 Every helper accepts an `extra` parameter that can be used to decorate the schema with additional properties.
 
-##### `boolean(description?: string, extra?: Schema): Schema`
+#### `boolean(description?: string, extra?: Schema): Schema`
 
 Defines a boolean schema, essentially:
 
@@ -45,7 +43,7 @@ const type = {
 };
 ```
 
-##### `integer(description?: string, extra?: Schema): Schema`
+#### `integer(description?: string, extra?: Schema): Schema`
 
 Defines an integer schema, essentially:
 
@@ -57,7 +55,7 @@ const type = {
 };
 ```
 
-##### `string(description?: string, extra?: Schema): Schema`
+#### `string(description?: string, extra?: Schema): Schema`
 
 Defines a string schema, essentially:
 
@@ -69,19 +67,19 @@ const type = {
 };
 ```
 
-##### `pattern(pattern: RegExp, description?: string, extra?: Schema): Schema`
+#### `pattern(pattern: RegExp, description?: string, extra?: Schema): Schema`
 
 Defines a string schema with a regex pattern.
 
-##### `date(description?: string, extra?: Schema): Schema`
+#### `date(description?: string, extra?: Schema): Schema`
 
 Defines a string schema with `date` format.
 
-##### `dateTime(description?: string, extra?: Schema): Schema`
+#### `dateTime(description?: string, extra?: Schema): Schema`
 
 Defines a string schema with `date-time` format.
 
-##### `constant(value: string, description?: string, extra?: Schema): Schema`
+#### `constant(value: string, description?: string, extra?: Schema): Schema`
 
 Defines a string schema with an `enum` that only accept a single value, essentially:
 
@@ -94,7 +92,7 @@ const type = {
 };
 ```
 
-##### `choice(values: Record<string, string>, extra?: Schema): Schema`
+#### `choice(values: Record<string, string>, extra?: Schema): Schema`
 
 Defines a string schema with an `enum` that only accepts predefined values. Keys of `values` are the allowed values, and the corresponding values in the object are the descriptions.
 
@@ -112,7 +110,7 @@ cons type = {
 };
 ```
 
-##### `array(items: Schema, description?: string, extra?: Schema): Schema`
+#### `array(items: Schema, description?: string, extra?: Schema): Schema`
 
 Defines an array schema with the specified `items`, essentially:
 
@@ -125,7 +123,7 @@ const type = {
 };
 ```
 
-##### `object(properties: Record<string, Schema>, description?: string, extra?: Schema): Schema`
+#### `object(properties: Record<string, Schema>, description?: string, extra?: Schema): Schema`
 
 Defines an object schema with the specified properties.
 
