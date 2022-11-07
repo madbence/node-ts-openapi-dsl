@@ -8,7 +8,8 @@
     "test": "node --test test.js"
   },
   "files": [
-    "dist/**/*.js"
+    "dist/**/*.js",
+    "dist/**/*.d.ts"
   ],
   "repository": {
     "type": "git",
