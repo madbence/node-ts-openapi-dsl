@@ -1,4 +1,9 @@
-import {MediaTypeObject, ResponseObject, OperationObject, PathsObject} from 'openapi3-ts';
+import {
+  MediaTypeObject,
+  ResponseObject,
+  OperationObject,
+  PathsObject,
+} from 'openapi3-ts';
 
 export const $path = Symbol('path');
 export const $method = Symbol('path');
@@ -6,17 +11,25 @@ export const $method = Symbol('path');
 type Response = MediaTypeObject & ResponseObject;
 type ResponseWithType = Response & {
   type: string;
-}
+};
 
-type Method = 'get' | 'put' | 'post' | 'delete' | 'options' | 'head' | 'patch' | 'trace';
+type Method =
+  | 'get'
+  | 'put'
+  | 'post'
+  | 'delete'
+  | 'options'
+  | 'head'
+  | 'patch'
+  | 'trace';
 type Operation = OperationObject & {
   path: string;
   method: Method;
-}
+};
 type OperationWithMeta = OperationObject & {
   [$path]: string;
   [$method]: string;
-}
+};
 
 export function response(props: ResponseWithType): ResponseObject {
   return {
@@ -29,9 +42,9 @@ export function response(props: ResponseWithType): ResponseObject {
         examples: props.examples,
         example: props.example,
         encoding: props.encoding,
-      }
-    }
-  }
+      },
+    },
+  };
 }
 
 export function json(props: Response) {
@@ -42,7 +55,7 @@ export function json(props: Response) {
 }
 
 export function operation(op: Operation): OperationWithMeta {
-  const {path, method, ...rest} = op;
+  const { path, method, ...rest } = op;
   return {
     [$path]: path,
     [$method]: method,
@@ -57,7 +70,7 @@ export function paths(ops: Record<string, OperationWithMeta>) {
     paths[operation[$path]][operation[$method]] = {
       operationId,
       ...operation,
-    }
+    };
   }
   return paths;
 }
