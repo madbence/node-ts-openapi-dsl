@@ -29,6 +29,7 @@ spec.paths = paths({
 spec.paths = {
   '/users/:id': {
     'get': {
+      operationId: 'getUser',
       responses: {
         '200': {
           content: {
