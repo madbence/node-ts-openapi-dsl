@@ -1,8 +1,21 @@
 {
   "name": "ts-openapi-dsl",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "TypeScript DSL for building OpenAPI specifications",
-  "main": "dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./types": {
+      "import": "./dist/types.js",
+      "types": "./dist/types.d.ts"
+    },
+    "./helpers": {
+      "import": "./dist/helpers.js",
+      "types": "./dist/helpers.d.ts"
+    }
+  },
   "type": "module",
   "scripts": {
     "test": "node --test test.js"
