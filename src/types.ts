@@ -1,11 +1,11 @@
 import { SchemaObject } from 'openapi3-ts';
 
-const optional = Symbol('optional');
-const required = Symbol('optional');
+const _optional = Symbol('optional');
+const _required = Symbol('optional');
 
 type Schema = SchemaObject & {
-  [optional]?: boolean;
-  [required]?: boolean;
+  [_optional]?: boolean;
+  [_required]?: boolean;
 };
 
 type SchemaBuilder<T extends any[]> = (...args: T) => Schema;
@@ -30,13 +30,13 @@ function defineType<T extends any[]>(
 
   (wrapped as SchemaHelper<T>).optional = (...args) => {
     const type = wrapped(...args);
-    type[optional] = true;
+    type[_optional] = true;
     return type;
   };
 
   (wrapped as SchemaHelper<T>).required = (...args) => {
     const type = wrapped(...args);
-    type[required] = true;
+    type[_required] = true;
     return type;
   };
 
@@ -104,9 +104,19 @@ export const object = defineType(
   (properties: Record<string, Schema>, description?: string) => ({
     description,
     required: Object.entries(properties)
-      .filter(([_, value]) => !value[optional])
+      .filter(([_, value]) => !value[_optional])
       .map(([key, _]) => key),
     additionalProperties: false,
     properties,
   })
 );
+
+export const optional = (schema: Schema) => ({
+  ...schema,
+  [_optional]: true,
+});
+
+export const required = (schema: Schema) => ({
+  ...schema,
+  [_required]: true,
+});

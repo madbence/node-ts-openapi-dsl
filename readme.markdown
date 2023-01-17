@@ -192,6 +192,56 @@ const type = {
 };
 ```
 
+#### `required(schema: Schema): Schema`
+
+Turns the given schema into a required schema (ie. in a wrapper `object`, it'll
+be a `required` property).
+
+```ts
+const wrapped = string.optional();
+
+const wrapper = object({
+  foo: wrapped,
+  bar: required(wrapped),
+});
+
+// same as
+const wrapper = {
+  type: 'object',
+  additionalProperties: false,
+  required: ['bar'],
+  properties: {
+    foo: { type: 'string' },
+    bar: { type: 'string' },
+  },
+};
+```
+
+#### `optional(schema: Schema): Schema`
+
+Turns the given schema into an optional schema (ie. in a wrapper `object`, it
+won't be a `required` property).
+
+```ts
+const wrapped = string.required();
+
+const wrapper = object({
+  foo: wrapped,
+  bar: optional(wrapped),
+});
+
+// same as
+const wrapper = {
+  type: 'object',
+  additionalProperties: false,
+  required: ['foo'],
+  properties: {
+    foo: { type: 'string' },
+    bar: { type: 'string' },
+  },
+};
+```
+
 ### OpenAPI helpers
 
 #### `response(props: Response): ResponseObject`
