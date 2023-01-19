@@ -73,6 +73,11 @@ export const dateTime = defineType('string', (description?: string) => ({
   format: 'date-time',
 }));
 
+export const binary = defineType('string', (description?: string) => ({
+  description,
+  format: 'binary',
+}));
+
 export const constant = defineType(
   'string',
   (value: string, description?: string) => ({

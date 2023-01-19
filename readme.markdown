@@ -118,6 +118,10 @@ Defines a string schema with `date` format.
 
 Defines a string schema with `date-time` format.
 
+#### `binary(description?: string, extra?: Schema): Schema`
+
+Defines a string schema with `binary` format.
+
 #### `constant(value: string, description?: string, extra?: Schema): Schema`
 
 Defines a string schema with an `enum` that only accept a single value, essentially:
