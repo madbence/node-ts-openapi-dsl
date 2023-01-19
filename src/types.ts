@@ -78,6 +78,11 @@ export const binary = defineType('string', (description?: string) => ({
   format: 'binary',
 }));
 
+export const email = defineType('string', (description?: string) => ({
+  description,
+  format: 'email',
+}));
+
 export const constant = defineType(
   'string',
   (value: string, description?: string) => ({

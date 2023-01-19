@@ -122,6 +122,10 @@ Defines a string schema with `date-time` format.
 
 Defines a string schema with `binary` format.
 
+#### `email(description?: string, extra?: Schema): Schema`
+
+Defines a string schema with `email` format.
+
 #### `constant(value: string, description?: string, extra?: Schema): Schema`
 
 Defines a string schema with an `enum` that only accept a single value, essentially:
