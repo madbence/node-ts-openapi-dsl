@@ -22,11 +22,13 @@ type Method =
   | 'head'
   | 'patch'
   | 'trace';
+
 type Operation = OperationObject & {
   path: string;
   method: Method;
 };
-type OperationWithMeta = OperationObject & {
+
+export type OperationWithMeta = OperationObject & {
   [$path]: string;
   [$method]: string;
 };
