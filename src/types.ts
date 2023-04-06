@@ -51,6 +51,10 @@ export const integer = defineType('integer', (description?: string) => ({
   description,
 }));
 
+export const number = defineType('number', (description?: string) => ({
+  description,
+}));
+
 export const string = defineType('string', (description?: string) => ({
   description,
 }));
