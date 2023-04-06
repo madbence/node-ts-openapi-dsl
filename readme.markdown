@@ -94,6 +94,19 @@ const type = {
 };
 ```
 
+#### `number(description?: string, extra?: Schema): Schema`
+
+Defines an number schema, essentially:
+
+```ts
+const type = {
+  type: 'number',
+  description,
+  ...extra,
+};
+```
+
+
 #### `string(description?: string, extra?: Schema): Schema`
 
 Defines a string schema, essentially:
