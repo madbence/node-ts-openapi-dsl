@@ -3,7 +3,7 @@ import { SchemaObject } from 'openapi3-ts';
 const _optional = Symbol('optional');
 const _required = Symbol('optional');
 
-type Schema = SchemaObject & {
+export type Schema = SchemaObject & {
   [_optional]?: boolean;
   [_required]?: boolean;
 };
