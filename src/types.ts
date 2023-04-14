@@ -113,13 +113,19 @@ export const array = defineType(
   })
 );
 
+function getRequiredProperties(properties: Record<string, Schema>) {
+  const required = Object.entries(properties)
+    .filter(([_, value]) => !value[_optional])
+    .map(([key, _]) => key);
+  if (required.length) return required;
+  return undefined;
+}
+
 export const object = defineType(
   'object',
   (properties: Record<string, Schema>, description?: string) => ({
     description,
-    required: Object.entries(properties)
-      .filter(([_, value]) => !value[_optional])
-      .map(([key, _]) => key),
+    required: getRequiredProperties(properties),
     additionalProperties: false,
     properties,
   })
