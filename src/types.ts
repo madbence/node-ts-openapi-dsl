@@ -8,7 +8,7 @@ export type Schema = SchemaObject & {
   [_required]?: boolean;
 };
 
-type SchemaBuilder<T extends any[]> = (...args: T) => Schema;
+type SchemaBuilder<T extends any[]> = (...args: T) => SchemaObject;
 type SchemaBuilderExtra<T extends any[]> = (
   ...args: T | [...T, SchemaObject]
 ) => Schema;
